@@ -1,11 +1,12 @@
 import React from 'react';
 
+
 const Cart = (props) => {
     const cart = props.cart;
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        total += product.price;
+        total += product.price * product.quantity;
     }
     let shipping = 0;
     if (total > 50) {
@@ -31,11 +32,13 @@ const Cart = (props) => {
         <div>
             <h3>Order Summary</h3>
             <p>Items Ordered: {cart.length}</p>
-            <p>Product Price:{total} </p>
+            <p>Product Price:{Number(total).toFixed(2)} </p>
             <p><small>Shipping: {shipping} </small></p>
             <p><small>Tax and VAT: {tax} </small></p>
             <p>Total: {gTotal} </p>
-
+            {
+                props.children
+            }
         </div>
     );
 };
