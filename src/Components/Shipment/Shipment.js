@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import './Inventory.css'
+import './Shipment.css'
 
-const Inventory = () => {
+const Shipment = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
 
-    const [loggedInUser, setLoggedInUser] = useState({});
+    const [loggedInUser, setLoggedInUser] = useState ({});
   
-    console.log(watch("example")); // watch input value by passing the name of it
+    console.log(watch("example"));
   
     return (
       <form className="ship-form" defaultValue={loggedInUser.name} onSubmit={handleSubmit(onSubmit)}>
+
         <input name="name" ref={register({ required: true })} placeholder="Name" />
         {errors.name && <span className="error">This field is required</span>}
 
@@ -29,4 +31,4 @@ const Inventory = () => {
     );
 };
 
-export default Inventory;
+export default Shipment;
